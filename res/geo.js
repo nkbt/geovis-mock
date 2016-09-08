@@ -70,5 +70,4 @@ const broadcast = ({wss}) => Object.assign(request => {
 
 exports.GEO_START = start;
 exports.GEO_STOP = stop;
-exports.GEO_BROADCAST = broadcast;
 

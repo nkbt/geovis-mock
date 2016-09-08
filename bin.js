@@ -5,7 +5,7 @@
 
 
 const {
-  WS_HOST = '0.0.0.0',
+  WS_HOST = 'localhost',
   WS_PORT = 10000
 } = process.env;
 

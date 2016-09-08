@@ -1,7 +1,7 @@
 {
   "name": "@nkbt/geovis-mock",
   "version": "0.1.0",
-  "description": "Mock server to feed GeoVis with data",
+  "description": "Mock to feed GeoVis server with Geo data",
   "main": "index.js",
   "bin": {
     "geovis-mock": "bin.js"
