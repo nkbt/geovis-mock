@@ -1,7 +1,7 @@
 {
   "name": "@nkbt/geovis-mock",
   "version": "0.1.0",
-  "description": "Mock to feed GeoVis server with Geo data",
+  "description": "Mock to feed GeoVis server with data",
   "main": "index.js",
   "bin": {
     "geovis-mock": "bin.js"
@@ -12,7 +12,8 @@
     "cov": "cross-env NODE_ENV=test istanbul cover --report text --report html --report lcov --dir coverage test",
     "tap-xunit": "tap-xunit",
     "precoveralls": "npm run cov -s",
-    "coveralls": "cat coverage/lcov.info | coveralls"
+    "coveralls": "cat coverage/lcov.info | coveralls",
+    "postversion": "git push --follow-tags"
   },
   "repository": {
     "type": "git",

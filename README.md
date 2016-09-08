@@ -8,7 +8,7 @@
 [![Dev Dependencies](https://img.shields.io/david/dev/nkbt/geovis-mock.svg?style=flat-square)](https://david-dm.org/nkbt/geovis-mock#info=devDependencies)
 
 
-Mock to feed GeoVis server with Geo data
+Mock to feed GeoVis server with data
 
 
 ## Installation
