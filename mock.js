@@ -19,6 +19,12 @@ const sampleAttacks = [
   [MOSCOW, VANCOUVER],
   [LONDON, NY]
 ];
+const colors = [
+  0x33ff33,
+  0xffff33,
+  0xff3333
+];
+
 const rnd = (min, max) => (
   max === undefined ?
     Math.round(Math.random() * min) :
@@ -28,7 +34,7 @@ const sample = arr => arr[rnd(arr.length - 1)];
 
 
 const mkAttack = ([srcLat, srcLon], [dstLat, dstLon]) => ({
-  srcLat, srcLon, dstLat, dstLon, value: rnd(1, 10)
+  srcLat, srcLon, dstLat, dstLon, value: rnd(1, 10), color: sample(colors)
 });
 
 
