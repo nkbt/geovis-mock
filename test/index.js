@@ -2,7 +2,7 @@
 
 
 const test = require('tape');
-const run = require('..');
+const {run} = require('..');
 
 
 test('Test', t => {
