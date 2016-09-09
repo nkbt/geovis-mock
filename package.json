@@ -42,6 +42,7 @@
     "tape": "4.6.0"
   },
   "dependencies": {
+    "colors": "1.1.2",
     "ws": "1.1.1"
   }
 }
