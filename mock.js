@@ -60,7 +60,7 @@ const encode = obj => JSON.stringify(obj);
 
 
 const mock = ({WS_HOST, WS_PORT}) => {
-  const responder = function (err, payload) {
+  function responder(err, payload) {
     if (err) {
       console.log('  ER', err);
       return;
@@ -72,21 +72,21 @@ const mock = ({WS_HOST, WS_PORT}) => {
     const response = encode(payload);
     console.log('>>', response.substr(0, 250));
     this.send(response);
-  };
+  }
 
 
-  const onConnect = function () {
+  function onConnect() {
     console.log('connected');
     this.stop = start(responder.bind(this));
-  };
+  }
 
 
-  const onClose = function () {
+  function onClose() {
     console.log('disconnected');
     if (this.stop) {
       this.stop();
     }
-  };
+  }
 
 
   console.log(`connecting to ws://${WS_HOST}:${WS_PORT}...`);
