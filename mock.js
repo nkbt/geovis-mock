@@ -16,18 +16,39 @@ c.setTheme({
 const SYD = [-33.865143, 151.209900];
 const DARWIN = [-12.462827, 130.841782];
 const NY = [40.730610, -73.935242];
+const SF = [38.006811, -122.667424];
 const LONDON = [51.509865, -0.118092];
 const VANCOUVER = [49.246292, -123.116226];
 const MOSCOW = [55.751244, 37.618423];
 const KYIV = [50.411198, 30.446634];
-const sampleAttacks = [
-  [SYD, NY],
-  [SYD, DARWIN],
-  [KYIV, MOSCOW],
-  [VANCOUVER, NY],
-  [MOSCOW, VANCOUVER],
-  [LONDON, NY]
+const TOKYO = [35.717243, 19.761646];
+const MUMBAI = [19.064499, 72.919112];
+const MADRID = [40.395906, -3.581182];
+const DUBLIN = [53.464008, -6.218773];
+const MIAMI = [25.669930, -80.126130];
+const LIMA = [-12.126830, -77.042177];
+const BUENOS_AIRES = [-34.309534, -58.700775];
+
+
+const cities = [
+  SYD,
+  DARWIN,
+  NY,
+  SF,
+  LONDON,
+  VANCOUVER,
+  MOSCOW,
+  KYIV,
+  TOKYO,
+  MUMBAI,
+  MADRID,
+  DUBLIN,
+  MIAMI,
+  LIMA,
+  BUENOS_AIRES
 ];
+
+
 const colors = [
   0x33ff33,
   0xffff33,
@@ -42,16 +63,27 @@ const rnd = (min, max) => (
 const sample = arr => arr[rnd(arr.length - 1)];
 
 
-const mkAttack = ([srcLat, srcLon], [dstLat, dstLon], color = sample(colors)) => ({
-  srcLat, srcLon, dstLat, dstLon, value: rnd(1, 10), color
+const mkAttack = (src, dst, color = sample(colors)) => ({
+  id: `${cities.indexOf(src)}|${cities.indexOf(dst)}|${Date.now().toString().slice(-6)}`,
+  srcLat: src[0],
+  srcLon: src[1],
+  dstLat: dst[0],
+  dstLon: dst[1],
+  value: rnd(1, 10),
+  color
 });
 
 
 const start = (send, {GEO_TIMEOUT = 2000, GEO_COLOR}) => {
   const sendGeo = () => {
+    const src = sample(cities);
+    const other = [].concat(cities);
+    other.splice(cities.indexOf(src), 1);
+    const dst = sample(other);
+
     send(null, {
       action: 'GEO_BROADCAST',
-      payload: [mkAttack(...sample(sampleAttacks), GEO_COLOR)]
+      payload: [mkAttack(src, dst, GEO_COLOR)]
     });
   };
 
