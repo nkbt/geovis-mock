@@ -64,7 +64,7 @@ const sample = arr => arr[rnd(arr.length - 1)];
 
 
 const mkAttack = (src, dst, color = sample(colors)) => ({
-  id: `${cities.indexOf(src)}|${cities.indexOf(dst)}|${Date.now().toString().slice(-6)}`,
+  id: `${cities.indexOf(src)}|${cities.indexOf(dst)}`,
   srcLat: src[0],
   srcLon: src[1],
   dstLat: dst[0],
